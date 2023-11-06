@@ -28,6 +28,7 @@ RUN set -xe \
   && tar -xzf otp-src.tar.gz -C $ERL_TOP --strip-components=1 \
   && rm otp-src.tar.gz \
   && ( cd $ERL_TOP \
+  && sed -i 's/a.cmp(TMP1, imm(args.size()));/cmp(TMP1, args.size());/' erts/emulator/beam/jit/arm/instr_select.cpp \
   && ./otp_build autoconf \
   && gnuArch="$(dpkg-architecture --query DEB_HOST_GNU_TYPE)" \
   && ./configure --build="$gnuArch" \
