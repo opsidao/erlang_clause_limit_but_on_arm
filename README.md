@@ -5,3 +5,5 @@ The patch fixing the bug is applied on line 31 of the Dockerfile, the `sed -i 's
 Just `docker build . -t erlang_bug_test && docker run erlang_bug_test elixir test.exs` to execute the small test file with the patch applied to see the bug fixed.
 
 Commenting out the mentioned line in the Dockerfile and re-executing the docker build & run will show the original issue happening.
+
+This bug only seems to happen when running on `aarch64 Linux`, i.e. a docker image running on an ARM mac.
